@@ -1,0 +1,10 @@
+<mat-grid-list cols="6" rowHeight="2:1">
+  <mat-grid-tile>
+    <auto-complete-stations *ngIf="fromStations$ | async" [label]="'From'" [stations]="fromStations$ | async"
+      (selectedStation)="setFromStation($event)"></auto-complete-stations>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <auto-complete-stations *ngIf="toStations$ | async" [label]="'To'" [stations]="toStations$ | async"
+      (selectedStation)="setFromStation($event)"></auto-complete-stations>
+  </mat-grid-tile>
+</mat-grid-list>
