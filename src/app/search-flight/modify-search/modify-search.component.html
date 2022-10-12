@@ -2,25 +2,59 @@
   <mat-card-title>Search Flight</mat-card-title>
   <mat-card-content>
     <form class="search-form" [formGroup]="searchForm">
-      <auto-complete-stations *ngIf="fromStations$ | async" [label]="'From'" [stations]="fromStations$ | async"
-        (selectedStation)="setFromStation($event)"></auto-complete-stations>
-      <auto-complete-stations *ngIf="toStations$ | async" [label]="'To'" [stations]="toStations$ | async"
-        (selectedStation)="setToStation($event)"></auto-complete-stations>
-      <app-date-range-picker (changeFromDate)="changeFromDate($event)" (changeToDate)="changeToDate($event)">
-      </app-date-range-picker>
-      <div class="d-inline-flex">
-        <app-passenger-count (changePassengerCount)="changePassengerCount($event)"></app-passenger-count>
+      <div>
+        <auto-complete-stations
+          *ngIf="fromStations$ | async"
+          [label]="'From'"
+          [stations]="fromStations$ | async"
+          (selectedStation)="setFromStation($event)"
+        ></auto-complete-stations>
       </div>
-      <mat-form-field appearance="outline">
-        <mat-label>Class</mat-label>
-        <mat-select formControlName="passengerClass" name="class">
-          <mat-option *ngFor="let classType of classTypes" [value]="classType.value">
-            {{classType.label}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+      <div>
+        <auto-complete-stations
+          *ngIf="toStations$ | async"
+          [label]="'To'"
+          [stations]="toStations$ | async"
+          (selectedStation)="setToStation($event)"
+        ></auto-complete-stations>
+      </div>
+
+      <div class="search-field">
+        <app-date-range-picker
+          (changeFromDate)="changeFromDate($event)"
+          (changeToDate)="changeToDate($event)"
+        >
+        </app-date-range-picker>
+      </div>
+
+      <div class="d-inline-flex search-field">
+        <app-passenger-count
+          (changePassengerCount)="changePassengerCount($event)"
+        ></app-passenger-count>
+      </div>
+      <div class="search-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Class</mat-label>
+          <mat-select formControlName="passengerClass" name="class">
+            <mat-option
+              *ngFor="let classType of classTypes"
+              [value]="classType.value"
+            >
+              {{ classType.label }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
       <div class="submit-btn">
-      <button [disabled]="searchForm.invalid" mat-raised-button color="primary" (click)="submitForm()">Search Flights</button>
+        <button
+          [disabled]="searchForm.invalid"
+          mat-raised-button
+          color="primary"
+          (click)="submitForm()"
+        >
+          Search Flights
+        </button>
       </div>
     </form>
   </mat-card-content>
