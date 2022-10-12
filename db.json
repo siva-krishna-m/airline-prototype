@@ -400,5 +400,8 @@
       "direct_flights": "41",
       "carriers": "25"
     }
-  ]
+  ],
+  "currentBookingState": {
+
+  }
 }

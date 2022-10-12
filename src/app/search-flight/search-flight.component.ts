@@ -14,7 +14,7 @@ export class SearchFlightComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.store.select(fromRoot.selectStations).subscribe(res=> console.log(res))
+    this.store.select(fromRoot.selectStations).subscribe(res=> {})
   }
 
 }
