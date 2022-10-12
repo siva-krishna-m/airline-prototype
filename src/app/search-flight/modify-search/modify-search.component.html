@@ -1,23 +1,27 @@
 <mat-card elevation="2">
   <mat-card-title>Search Flight</mat-card-title>
   <mat-card-content>
-    <form [formGroup]="searchForm">
+    <form class="search-form" [formGroup]="searchForm">
       <auto-complete-stations *ngIf="fromStations$ | async" [label]="'From'" [stations]="fromStations$ | async"
         (selectedStation)="setFromStation($event)"></auto-complete-stations>
       <auto-complete-stations *ngIf="toStations$ | async" [label]="'To'" [stations]="toStations$ | async"
         (selectedStation)="setToStation($event)"></auto-complete-stations>
       <app-date-range-picker (changeFromDate)="changeFromDate($event)" (changeToDate)="changeToDate($event)">
       </app-date-range-picker>
-      <app-passenger-count (changePassengerCount)="changePassengerCount($event)"></app-passenger-count>
+      <div class="d-inline-flex">
+        <app-passenger-count (changePassengerCount)="changePassengerCount($event)"></app-passenger-count>
+      </div>
       <mat-form-field appearance="outline">
-        <mat-label>Favorite food</mat-label>
-        <mat-select formControlName="passengerClass" name="food">
+        <mat-label>Class</mat-label>
+        <mat-select formControlName="passengerClass" name="class">
           <mat-option *ngFor="let classType of classTypes" [value]="classType.value">
             {{classType.label}}
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <button [disabled]="searchForm.invalid" mat-stroked-button color="primary" (click)="submitForm()">Search Flights</button>
+      <div class="submit-btn">
+      <button [disabled]="searchForm.invalid" mat-raised-button color="primary" (click)="submitForm()">Search Flights</button>
+      </div>
     </form>
   </mat-card-content>
 </mat-card>

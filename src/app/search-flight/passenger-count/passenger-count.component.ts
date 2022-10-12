@@ -25,6 +25,7 @@ export class PassengerCountComponent implements OnInit {
   adult = PassengerType.ADULT;
   child = PassengerType.CHILD;
   infant = PassengerType.INFANT;
+  showCounter = false;
 
   passengerCountMap: PassengerCount = {
     adult: 1,

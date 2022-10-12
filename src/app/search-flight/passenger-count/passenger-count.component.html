@@ -1,35 +1,52 @@
-<mat-expansion-panel [hideToggle]="false">
+<!-- <mat-expansion-panel [hideToggle]="false">
     <mat-expansion-panel-header>
         <mat-panel-title>{{totalPassengers}}</mat-panel-title>
     </mat-expansion-panel-header>
-    <mat-grid-list cols="2" rowHeight="fit" [style.height]="'100px'" [gutterSize]="'1px'">
-      <mat-grid-tile [colspan]="1" [rowspan]="1">ADULT</mat-grid-tile>
-      <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <mat-action-row>
-          <button mat-button color="warn" [disabled]="passengerCountMap.adult === 1" (click)="updatePassengerCount('ADULT', 'DECREMENT')">-</button>
-          <span>{{passengerCountMap.adult}}</span>
-          <button mat-button color="primary" (click)="updatePassengerCount('ADULT', 'INCREMENT')">+</button>
-        </mat-action-row>
-      </mat-grid-tile>
-    </mat-grid-list>
-    <mat-grid-list cols="2" rowHeight="fit" [style.height]="'100px'" [gutterSize]="'1px'">
-      <mat-grid-tile [colspan]="1" [rowspan]="1">CHILD</mat-grid-tile>
-      <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <mat-action-row>
-          <button mat-button color="warn" [disabled]="passengerCountMap.child === 0" (click)="updatePassengerCount('CHILD', 'DECREMENT')">-</button>
-          <span>{{passengerCountMap.child}}</span>
-          <button mat-button color="primary" (click)="updatePassengerCount('CHILD', 'INCREMENT')">+</button>
-        </mat-action-row>
-      </mat-grid-tile>
-    </mat-grid-list>
-    <mat-grid-list cols="2" rowHeight="fit" [style.height]="'100px'" [gutterSize]="'1px'">
-      <mat-grid-tile [colspan]="1" [rowspan]="1">INFANT</mat-grid-tile>
-      <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <mat-action-row>
-          <button mat-button color="warn" [disabled]="passengerCountMap.infant === 0" (click)="updatePassengerCount('INFANT', 'DECREMENT')">-</button>
-          <span>{{passengerCountMap.infant}}</span>
-          <button mat-button color="primary" (click)="updatePassengerCount('INFANT', 'INCREMENT')">+</button>
-        </mat-action-row>
-      </mat-grid-tile>
-    </mat-grid-list>
-</mat-expansion-panel>
+
+</mat-expansion-panel> -->
+
+<mat-form-field class="counter-input" style="position: relative;" appearance="outline">
+  <input matInput type="text" required readonly value="{{totalPassengers}}" (click)="showCounter = !showCounter">
+  <ng-template [ngIf]="showCounter">
+    <mat-card class="position-absolute counter">
+        <mat-card-content class="mt-2">
+          <div>
+            <div class="counter-wrapper">
+              <mat-icon class="close-icon" (click)="showCounter=false;">close</mat-icon>
+              <div class="action-blurb">ADULT</div>
+              <div class="action-blurb">
+                <div>
+                  <button mat-button color="warn" [disabled]="passengerCountMap.adult === 1"
+                    (click)="updatePassengerCount('ADULT', 'DECREMENT')">-</button>
+                  <span>{{passengerCountMap.adult}}</span>
+                  <button mat-button color="primary" (click)="updatePassengerCount('ADULT', 'INCREMENT')">+</button>
+                </div>
+              </div>
+            </div>
+            <div class="counter-wrapper">
+              <div class="action-blurb">CHILD</div>
+              <div class="action-blurb">
+                <mat-action-row>
+                  <button mat-button color="warn" [disabled]="passengerCountMap.child === 0"
+                    (click)="updatePassengerCount('CHILD', 'DECREMENT')">-</button>
+                  <span>{{passengerCountMap.child}}</span>
+                  <button mat-button color="primary" (click)="updatePassengerCount('CHILD', 'INCREMENT')">+</button>
+                </mat-action-row>
+              </div>
+            </div>
+            <div class="counter-wrapper">
+              <div class="action-blurb">INFANT</div>
+              <div class="action-blurb">
+                <mat-action-row>
+                  <button mat-button color="warn" [disabled]="passengerCountMap.infant === 0"
+                    (click)="updatePassengerCount('INFANT', 'DECREMENT')">-</button>
+                  <span>{{passengerCountMap.infant}}</span>
+                  <button mat-button color="primary" (click)="updatePassengerCount('INFANT', 'INCREMENT')">+</button>
+                </mat-action-row>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+    </mat-card>
+  </ng-template>
+</mat-form-field>
