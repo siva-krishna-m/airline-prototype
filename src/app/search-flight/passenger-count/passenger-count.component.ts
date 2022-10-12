@@ -30,7 +30,9 @@ export class PassengerCountComponent implements OnInit {
     adult: 1,
     child: 0,
     infant: 0
-  }
+  };
+  totalPassengers = 'Adults - 1, Children - 0, Infants - 0';
+
   constructor() {}
 
   ngOnInit() {}
@@ -60,5 +62,7 @@ export class PassengerCountComponent implements OnInit {
        }
     }
     this.changePassengerCount.emit(this.passengerCountMap);
+    const { adult, child, infant } = this.passengerCountMap;
+    this.totalPassengers = `Adults - ${adult}, Children - ${child}, Infants - ${infant}`
   }
 }
