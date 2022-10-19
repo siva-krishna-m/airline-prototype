@@ -26,6 +26,7 @@ export class AutoCompleteStationsComponent implements AfterViewInit, OnChanges {
   @Output() selectedStation: EventEmitter<any> = new EventEmitter();
   @ViewChild('autoSelect') autoSelect!: ElementRef;
   @Output() closeOptions: EventEmitter<any> = new EventEmitter(true);
+  showList = false;
 
   constructor() {
     this.stateCtrl  = new FormControl(this.value || '');

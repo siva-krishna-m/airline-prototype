@@ -1,0 +1,41 @@
+p {
+  font-family: Lato;
+}
+
+.form-field {
+  width: 300px;
+  position: relative;
+}
+
+.station-search {
+  width: 100%;
+  min-height: 50px;
+  border: 1px solid lightgray;
+}
+
+.station-search:focus {
+  border: 1px solid lightgray;
+}
+
+.dropdownlist {
+  width: 100%;
+  position: absolute;
+  top: 55px;
+  left: 0;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  box-shadow: 0px 0px 10px 0px lightgrey;
+}
+
+.dropdownlist li {
+  padding: 15px 10px;
+}
+.dropdownlist li:hover {
+  background-color: lightgray;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,20 +1,15 @@
-<mat-form-field class="" appearance="outline">
-  <mat-label>{{label}}</mat-label>
-  <input matInput #autoSelect
-         aria-label="From"
-         [matAutocomplete]="auto"
-         #trigger = "matAutocompleteTrigger"
-         [formControl]="stateCtrl">
-  <mat-autocomplete autoActiveFirstOption="true"  #auto="matAutocomplete">
-    <mat-option  disabled="true">
-      <span class="from_span_location"> {{label}} <i (click)="trigger.closePanel(); closePanel()" class="icon-wrong"></i> </span>
-    </mat-option>
-    <mat-option *ngFor="let station of filteredStates | async" [value]="station.name" (onSelectionChange)="setSelectedOption(station)">
-      <div style="display: flex; justify-content: space-between;">
-        <span>{{station.name}}</span>
-        <span>{{station.city}}</span>
-      </div>
+<div class="form-field">
+  <input class="station-search" type="text" [formControl]="stateCtrl" (click)="showList = !showList" />
+  <ul class="dropdownlist" *ngIf="showList">
+    <li
+      *ngFor="let station of filteredStates | async"
+      (click)="setSelectedOption(station)"
+    >
+    <div class="list-item">
+    <span>{{ station.name }}</span>
+    <span>{{ station.city }}</span>
+    </div>
 
-    </mat-option>
-  </mat-autocomplete>
-</mat-form-field>
+    </li>
+  </ul>
+</div>
